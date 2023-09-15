@@ -41,9 +41,9 @@ function printLibraryToPage() {
       if (book.read === false) {
         entry.classList.add('not-read-book');
       } else {
-        entry.classList.add('read-book')
+        entry.classList.add('read-book');
       }
-      addReadButtonToEntry(book, entry)
+      addReadButtonToEntry(book, entry);
       addDeleteButtonToEntry(library.indexOf(book), entry);
 
       books.appendChild(entry);
