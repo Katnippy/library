@@ -7,6 +7,18 @@ function clearLibraryOnPage() {
   }
 }
 
+function addReadButtonToEntry(book, entry) {
+  const readButton = document.createElement('button');
+  readButton.classList.add('read');
+  readButton.textContent = 'Read';
+  readButton.addEventListener('click', () => {
+    book.read = true;
+    entry.classList.remove('not-read-book');
+    entry.classList.add('read-book');
+  });
+  entry.appendChild(readButton);
+}
+
 function addDeleteButtonToEntry(index, entry) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete');
@@ -26,20 +38,27 @@ function printLibraryToPage() {
       entry = document.createElement('div');
       entry.textContent = `${book.title} by ${book.author}, ${book.pages} 
       pages`;
+      if (book.read === false) {
+        entry.classList.add('not-read-book');
+      } else {
+        entry.classList.add('read-book')
+      }
+      addReadButtonToEntry(book, entry)
       addDeleteButtonToEntry(library.indexOf(book), entry);
 
       books.appendChild(entry);
     }
   }
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary(title, author, pages) {
-  let book = new Book(title, author, pages);
+  let book = new Book(title, author, pages, read = false);
   library.push(book);
 
   printLibraryToPage();
