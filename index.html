@@ -7,6 +7,25 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  
+  <div id="container">
+    <div id="form">
+      <h2>Add a book</h2>
+      <form name="form">
+        <label for="title">Title: </label>
+        <input type="text" id="title" name="title" required>
+        <label for="author">Author: </label>
+        <input type="text" id="author" name="author" required>
+        <label for="pages">Pages: </label>
+        <input type="number" id="pages" name="pages" required>
+        <input type="submit" value="Add">
+      </form>
+    </div>
+    <br>
+    <div id="library">
+      <h2>Library</h2>
+      <!--Make a table-->
+      <div class="books"></div>
+    </div>
+  </div>
 </body>
 </html>
