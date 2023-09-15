@@ -7,6 +7,18 @@ function clearLibraryOnPage() {
   }
 }
 
+function addDeleteButtonToEntry(index, entry) {
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('delete');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', () => {
+    library.splice(index, 1);
+    books.removeChild(entry);
+  });
+  entry.appendChild(deleteButton);
+}
+
+
 function printLibraryToPage() {
     clearLibraryOnPage();
 
@@ -14,6 +26,8 @@ function printLibraryToPage() {
       entry = document.createElement('div');
       entry.textContent = `${book.title} by ${book.author}, ${book.pages} 
       pages`;
+      addDeleteButtonToEntry(library.indexOf(book), entry);
+
       books.appendChild(entry);
     }
   }
